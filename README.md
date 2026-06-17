@@ -3,6 +3,7 @@
 
 DB Schema : https://dbdiagram.io/d/Copy-of-Copy-of-DB-schema-6a1182e4b62396d22c520be4
 
+PPT : https://canva.link/5jfztfhzf3mfv4y
 
 
 This local project demonstrates the architecture-driven IPO workflow:
