@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, TrendingUp, Users, BarChart3, Shield, Activity, Newspaper, AlertTriangle, Building2, Target, ChevronDown, ChevronUp, Send, Sparkles, RefreshCw } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Users, BarChart3, Shield, Activity, Newspaper, AlertTriangle, Building2, Target, ChevronDown, ChevronUp, Send, Sparkles, RefreshCw, ExternalLink } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { Progress } from '../components/ui/progress';
 import { Separator } from '../components/ui/separator';
@@ -14,6 +14,28 @@ function DecisionBadge({ decision }) {
     'NEEDS_REVIEW': { label: 'Watch', variant: 'warning' },
   };
   const d = map[decision] || { label: decision || 'Pending', variant: 'outline' };
+
+  const handleApply = () => {
+    const broker = localStorage.getItem('selectedBroker') || 'Groww';
+    let url = 'https://groww.in/ipo';
+    if (broker.toLowerCase().includes('zerodha')) url = 'https://kite.zerodha.com/ipo';
+    if (broker.toLowerCase().includes('angel')) url = 'https://trade.angelone.in/';
+    if (broker.toLowerCase().includes('upstox')) url = 'https://upstox.com/ipo/';
+    window.open(url, '_blank');
+  };
+
+  if (decision === 'ACCEPTED') {
+    return (
+      <button 
+        onClick={handleApply}
+        title="Apply via configured broker"
+        className="px-4 py-1.5 rounded-full text-sm font-semibold transition-transform hover:scale-105 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5 shadow-sm shadow-emerald-500/10 cursor-pointer"
+      >
+        {d.label} <ExternalLink className="w-3.5 h-3.5" />
+      </button>
+    );
+  }
+
   return <Badge variant={d.variant} className="text-sm px-4 py-1.5">{d.label}</Badge>;
 }
 

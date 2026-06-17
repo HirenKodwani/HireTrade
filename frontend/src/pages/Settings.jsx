@@ -57,6 +57,11 @@ export default function SettingsPage() {
           <Shield className="w-5 h-5 text-primary" /> Decision Engine Configuration
         </h2>
         <div className="space-y-4">
+          {!config && (
+            <div className="text-gray-400 text-sm py-4">
+              Loading configuration... or failed to connect to backend.
+            </div>
+          )}
           {config && [
             ['Min Decision Age (hours)', 'min_decision_age_hours', config.min_decision_age_hours],
             ['Min GMP %', 'min_gmp_percent', config.min_gmp_percent],

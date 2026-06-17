@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/live-ipos', label: 'Live IPOs', icon: TrendingUp },
   { path: '/upcoming-ipos', label: 'Upcoming IPOs', icon: CalendarRange },
   { path: '/listed-ipos', label: 'Listed IPOs', icon: LineChart },

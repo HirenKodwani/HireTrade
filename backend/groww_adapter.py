@@ -17,8 +17,8 @@ class GrowwAPIClient:
             return self._normalize_portfolio(holdings_response["holdings"])
         except Exception as e:
             logging.error(f"Groww API fetch_holdings failed: {e}")
-            # Raise an explicit HTTP exception so the frontend knows it failed
-            raise HTTPException(status_code=500, detail=f"Groww API Error: {str(e)}")
+            # Return 401 for Auth/Token issues so frontend can display a clean error
+            raise HTTPException(status_code=401, detail="Groww API Error: Authentication failed. Your API token has either expired or is invalid.")
 
     def _normalize_portfolio(self, holdings):
         if not isinstance(holdings, list):
